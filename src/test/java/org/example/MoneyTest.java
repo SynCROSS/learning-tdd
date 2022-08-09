@@ -55,7 +55,7 @@ class MoneyTest {
         );
         assertFalse(
                 new Franc(5).equals(new Franc(6)),
-                "new Dollar(5) is not equal to new Dollar(6)"
+                "new Franc(5) is not equal to new Franc(6)"
         );
     }
 }
