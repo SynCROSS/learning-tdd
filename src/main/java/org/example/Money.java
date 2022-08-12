@@ -1,13 +1,19 @@
 package org.example;
 
+import org.example.dollar.Dollar;
+import org.example.franc.Franc;
+
 import java.util.Objects;
 
-public class Money {
+public abstract class Money {
     protected final int amount; // Use Double Or Else
 
-    public Money(int amount) {
+    protected Money(int amount) {
         this.amount = amount;
     }
+
+    static Money dollar(int amount) {return new Dollar(amount);}
+    static Money franc(int amount) {return new Franc(amount);}
 
     @Override
     public final boolean equals(Object obj) {
@@ -25,6 +31,8 @@ public class Money {
     }
 
     protected final int getAmount() {
-        return amount;
+        return this.amount;
     }
+
+    protected abstract Money times(int multiplier);
 }

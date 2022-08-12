@@ -7,7 +7,7 @@ public class Dollar extends Money {
         super(amount);
     }
 
-    public final Dollar times(int multiplier) {
+    public final Money times(int multiplier) {
         return new Dollar(this.getAmount() * multiplier);
     }
 
