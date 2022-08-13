@@ -11,14 +11,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class MoneyTest {
     @Test
     final void testMultiplication() {
-        Dollar five = new Dollar(5);
+        Money five = Money.dollar(5);
         assertEquals(
-                new Dollar(10),
+                Money.dollar(10),
                 five.times(2),
                 "dollar.amount should be 10"
         );
         assertEquals(
-                new Dollar(15),
+                Money.dollar(15),
                 five.times(3),
                 "dollar.amount should be 15"
         );
@@ -26,14 +26,14 @@ class MoneyTest {
 
     @Test
     final void testFrancMultiplication() {
-        Franc five = new Franc(5);
+        Money five = Money.franc(5);
         assertEquals(
-                new Franc(10),
+                Money.franc(10),
                 five.times(2),
                 "franc.amount should be 10"
         );
         assertEquals(
-                new Franc(15),
+                Money.franc(15),
                 five.times(3),
                 "franc.amount should be 15"
         );
@@ -42,23 +42,23 @@ class MoneyTest {
     @Test
     final void testEquality() {
         assertTrue(
-                new Dollar(5).equals(new Dollar(5)),
-                "new Dollar(5) is equal to new Dollar(5)"
+                Money.dollar(5).equals(Money.dollar(5)),
+                "Money.dollar(5) is equal to Money.dollar(5)"
         );
         assertFalse(
-                new Dollar(5).equals(new Dollar(6)),
-                "new Dollar(5) is not equal to new Dollar(6)"
+                Money.dollar(5).equals(Money.dollar(6)),
+                "Money.dollar(5) is not equal to Money.dollar(6)"
         );
         assertTrue(
-                new Franc(5).equals(new Franc(5)),
-                "new Franc(5) is equal to new Franc(5)"
+                Money.franc(5).equals(Money.franc(5)),
+                "Money.franc(5) is equal to Money.franc(5)"
         );
         assertFalse(
-                new Franc(5).equals(new Franc(6)),
-                "new Franc(5) is not equal to new Franc(6)"
+                Money.franc(5).equals(Money.franc(6)),
+                "Money.franc(5) is not equal to Money.franc(6)"
         );
         assertFalse(
-                new Franc(5).equals(new Dollar(5)),
+                Money.franc(5).equals(Money.dollar(5)),
                 "Franc is not Dollar"
         );
     }
