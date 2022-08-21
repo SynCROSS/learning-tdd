@@ -8,15 +8,11 @@ public class Franc extends Money {
             int amount,
             String currency
     ) {
-        this.amount = amount;
-        this.currency = currency;
+        super(amount, currency);
     }
 
     public final Money times(int multiplier) {
-        return new Franc(
-                this.amount * multiplier,
-                null
-        );
+        return new Franc(this.amount * multiplier, null);
     }
 
 

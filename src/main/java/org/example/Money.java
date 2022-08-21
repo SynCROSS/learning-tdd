@@ -6,11 +6,30 @@ import org.example.franc.Franc;
 import java.util.Objects;
 
 public abstract class Money {
+    private final String currency;
     protected int amount; // Use Double Or Else
-    protected String currency;
 
-    static Money dollar(int amount) {return new Dollar(amount, "USD");}
-    static Money franc(int amount) {return new Franc(amount, "CHF");}
+    protected Money(
+            int amount,
+            String currency
+    ) {
+        this.amount   = amount;
+        this.currency = currency;
+    }
+
+    static Money dollar(int amount) {
+        return new Dollar(
+                amount,
+                "USD"
+        );
+    }
+
+    static Money franc(int amount) {
+        return new Franc(
+                amount,
+                "CHF"
+        );
+    }
 
     @Override
     public final boolean equals(Object obj) {
