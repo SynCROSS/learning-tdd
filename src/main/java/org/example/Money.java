@@ -5,11 +5,11 @@ import org.example.franc.Franc;
 
 import java.util.Objects;
 
-public abstract class Money {
+public class Money {
     private final String currency;
-    protected int amount; // Use Double Or Else
+    private final int amount; // Use Double Or Else
 
-    protected Money(
+    public Money(
             int amount,
             String currency
     ) {
@@ -18,26 +18,20 @@ public abstract class Money {
     }
 
     static Money dollar(int amount) {
-        return new Dollar(
-                amount,
-                "USD"
-        );
+        return new Dollar(amount, "USD");
     }
 
     static Money franc(int amount) {
-        return new Franc(
-                amount,
-                "CHF"
-        );
+        return new Franc(amount, "CHF");
     }
 
     @Override
     public final boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (null == obj || this.getClass() != obj.getClass())
-            return false;
         Money money = (Money) obj;
+        if (this == money)
+            return true;
+        if (null == money || !this.currency().equals(money.currency()))
+            return false;
         return this.getAmount() == money.getAmount();
     }
 
@@ -46,11 +40,13 @@ public abstract class Money {
         return Objects.hash(this.getAmount());
     }
 
-    protected final int getAmount() {
+    private final int getAmount() {
         return this.amount;
     }
 
-    protected abstract Money times(int multiplier);
+    protected Money times(int multiplier) {
+        return new Money(this.getAmount() * multiplier, this.currency);
+    }
 
     public final String currency() {
         return this.currency;
