@@ -1,8 +1,5 @@
 package org.example;
 
-import org.example.dollar.Dollar;
-import org.example.franc.Franc;
-
 import java.util.Objects;
 
 public class Money {
@@ -18,11 +15,11 @@ public class Money {
     }
 
     static Money dollar(int amount) {
-        return new Dollar(amount, "USD");
+        return new Money(amount, "USD");
     }
 
     static Money franc(int amount) {
-        return new Franc(amount, "CHF");
+        return new Money(amount, "CHF");
     }
 
     @Override
