@@ -6,7 +6,7 @@ public class Money {
     private final String currency;
     private final int amount; // Use Double Or Else
 
-    public Money(
+    private Money(
             int amount,
             String currency
     ) {
@@ -29,12 +29,12 @@ public class Money {
             return true;
         if (null == money || !this.currency().equals(money.currency()))
             return false;
-        return this.getAmount() == money.getAmount();
+        return this.amount == money.amount;
     }
 
     @Override
     public final int hashCode() {
-        return Objects.hash(this.getAmount());
+        return Objects.hash(this.amount);
     }
 
     private final int getAmount() {
@@ -42,7 +42,7 @@ public class Money {
     }
 
     protected Money times(int multiplier) {
-        return new Money(this.getAmount() * multiplier, this.currency);
+        return new Money(this.amount * multiplier, this.currency);
     }
 
     public final String currency() {
