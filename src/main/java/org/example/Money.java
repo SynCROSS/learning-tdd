@@ -48,4 +48,8 @@ public class Money {
     public final String currency() {
         return this.currency;
     }
+
+    public final Money plus(Money addend) {
+        return new Money(this.amount + addend.getAmount(), this.currency);
+    }
 }
