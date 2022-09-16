@@ -24,12 +24,16 @@ public class Money {
 
     @Override
     public final boolean equals(Object obj) {
-        Money money = (Money) obj;
-        if (this == money)
+        if (this == obj)
             return true;
-        if (null == money || !this.currency().equals(money.currency()))
+        if (null == obj)
             return false;
-        return this.amount == money.amount;
+        if (this.getClass() != obj.getClass())
+            return false;
+        Money money = (Money) obj;
+        if (!this.currency().equals(money.currency()))
+            return false;
+        return this.amount == money.getAmount();
     }
 
     @Override
@@ -41,7 +45,7 @@ public class Money {
         return this.amount;
     }
 
-    protected Money times(int multiplier) {
+    protected final Money times(int multiplier) {
         return new Money(this.amount * multiplier, this.currency);
     }
 
