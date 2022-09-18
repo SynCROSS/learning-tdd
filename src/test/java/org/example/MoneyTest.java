@@ -28,7 +28,10 @@ class MoneyTest {
 
     @Test
     final void testSimpleAddition() {
-        Money ten = Money.dollar(5).plus(Money.dollar(5));
-        assertEquals(Money.dollar(10), ten, "Five Dollars Plus Five Dollars Must Be Ten Dollars");
+        Money five = Money.dollar(5);
+        Expression sum = five.plus(five);
+        Money reduced = new Bank().reduce(sum, "USD");
+
+        assertEquals(Money.dollar(10), reduced, "Five Plus Five Is Ten And Its Currency is USD");
     }
 }

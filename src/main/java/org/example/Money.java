@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.Objects;
 
-public class Money {
+public class Money implements Expression {
     private final String currency;
     private final int amount; // Use Double Or Else
 
@@ -53,7 +53,7 @@ public class Money {
         return this.currency;
     }
 
-    public final Money plus(Money addend) {
+    public final Expression plus(Money addend) {
         return new Money(this.amount + addend.getAmount(), this.currency);
     }
 }
