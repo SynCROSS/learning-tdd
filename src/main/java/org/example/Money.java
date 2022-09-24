@@ -6,9 +6,8 @@ public class Money implements Expression {
     private final String currency;
     private final int amount; // Use Double Or Else
 
-    private Money(
-            int amount,
-            String currency
+    public Money(
+            int amount, String currency
     ) {
         this.amount   = amount;
         this.currency = currency;
@@ -41,7 +40,7 @@ public class Money implements Expression {
         return Objects.hash(this.amount);
     }
 
-    private final int getAmount() {
+    public final int getAmount() {
         return this.amount;
     }
 
@@ -54,6 +53,6 @@ public class Money implements Expression {
     }
 
     public final Expression plus(Money addend) {
-        return new Money(this.amount + addend.getAmount(), this.currency);
+        return new Sum(this, addend);
     }
 }
