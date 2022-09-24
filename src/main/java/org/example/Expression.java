@@ -1,3 +1,6 @@
 package org.example;
 
-public interface Expression {}
+public interface Expression {
+
+  Money reduce(String currency);
+}

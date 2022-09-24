@@ -10,10 +10,6 @@ public class Bank {
         * int amount = sum.getAugend().getAmount() + sum.getAddend().getAmount();
         * return new Money(amount, currency);
         */
-    if (expression instanceof Money) {
-      return (Money) expression;
-    }
-    Sum sum = (Sum) expression;
-    return sum.reduce(currency);
+    return expression.reduce(currency);
   }
 }

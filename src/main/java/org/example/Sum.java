@@ -12,15 +12,15 @@ public class Sum implements Expression {
     this.addend = addend;
   }
 
-  public Money getAugend() {
+  public final Money getAugend() {
     return this.augend;
   }
 
-  public Money getAddend() {
+  public final Money getAddend() {
     return this.addend;
   }
 
-  public Money reduce(String currency) {
+  public final Money reduce(String currency) {
     int amount = this.augend.getAmount() + this.addend.getAmount();
     return new Money(amount, currency);
   }

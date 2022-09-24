@@ -3,56 +3,65 @@ package org.example;
 import java.util.Objects;
 
 public class Money implements Expression {
-    private final String currency;
-    private final int amount; // Use Double Or Else
 
-    public Money(
-            int amount, String currency
-    ) {
-        this.amount   = amount;
-        this.currency = currency;
-    }
+  private final String currency;
+  private final int amount; // Use Double Or Else
 
-    static Money dollar(int amount) {
-        return new Money(amount, "USD");
-    }
+  public Money(
+      int amount, String currency
+  ) {
+    this.amount = amount;
+    this.currency = currency;
+  }
 
-    static Money franc(int amount) {
-        return new Money(amount, "CHF");
-    }
+  static Money dollar(int amount) {
+    return new Money(amount, "USD");
+  }
 
-    @Override
-    public final boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (null == obj)
-            return false;
-        if (this.getClass() != obj.getClass())
-            return false;
-        Money money = (Money) obj;
-        if (!this.currency().equals(money.currency()))
-            return false;
-        return this.amount == money.getAmount();
-    }
+  static Money franc(int amount) {
+    return new Money(amount, "CHF");
+  }
 
-    @Override
-    public final int hashCode() {
-        return Objects.hash(this.amount);
+  @Override
+  public final boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
     }
+    if (null == obj) {
+      return false;
+    }
+    if (this.getClass() != obj.getClass()) {
+      return false;
+    }
+    Money money = (Money) obj;
+    if (!this.currency().equals(money.currency())) {
+      return false;
+    }
+    return this.amount == money.getAmount();
+  }
 
-    public final int getAmount() {
-        return this.amount;
-    }
+  @Override
+  public final int hashCode() {
+    return Objects.hash(this.amount);
+  }
 
-    protected final Money times(int multiplier) {
-        return new Money(this.amount * multiplier, this.currency);
-    }
+  public final int getAmount() {
+    return this.amount;
+  }
 
-    public final String currency() {
-        return this.currency;
-    }
+  protected final Money times(int multiplier) {
+    return new Money(this.amount * multiplier, this.currency);
+  }
 
-    public final Expression plus(Money addend) {
-        return new Sum(this, addend);
-    }
+  public final String currency() {
+    return this.currency;
+  }
+
+  public final Expression plus(Money addend) {
+    return new Sum(this, addend);
+  }
+
+  public final Money reduce(String currency) {
+    return this;
+  }
 }
